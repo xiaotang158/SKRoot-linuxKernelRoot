@@ -23,11 +23,8 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x PermissionManager/gradlew
 
-    - name: Download dependencies
-      run: cd PermissionManager && ./gradlew dependencies --stacktrace
-
-    - name: Build with Gradle
-      run: cd PermissionManager && ./gradlew build --stacktrace
+    - name: Clean and Build with Gradle
+      run: cd PermissionManager && ./gradlew clean build --stacktrace
 
     - name: Build Debug APK
       run: cd PermissionManager && ./gradlew assembleDebug --stacktrace
