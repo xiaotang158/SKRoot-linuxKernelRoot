@@ -21,36 +21,36 @@ jobs:
         cache: gradle
 
     - name: Grant execute permission for gradlew
-      run: cd PermissionManager/ && chmod +x PermissionManager/gradlew
+      run: cd PermissionManager/ && chmod +x ./gradlew
 
     - name: Build with Gradle
-      run: PermissionManager/gradlew build
+      run: ./gradlew build
     
 
     - name: Download dependencies
-      run: PermissionManager/gradlew dependencies --stacktrace
+      run: ./gradlew dependencies --stacktrace
 
 
     - name: Build Debug APK
-      run: PermissionManager/gradlew assembleDebug --stacktrace
+      run: ./gradlew assembleDebug --stacktrace
 
 
     - name: Build Release APK
-      run: PermissionManager/gradlew assembleRelease --stacktrace
+      run: ./gradlew assembleRelease --stacktrace
 
 
     - name: Upload Debug APK
       uses: actions/upload-artifact@v3
       with:
         name: debug-apk
-        path: SKRoot-linuxKernelRoot/PermissionManager/app/build/outputs/apk/debug/*.apk
+        path: ./app/build/outputs/apk/debug/*.apk
 
     - name: Build Release APK
-      run: PermissionManager/gradlew assembleRelease --stacktrace
+      run: ./gradlew assembleRelease --stacktrace
 
 
     - name: Upload Release APK
       uses: actions/upload-artifact@v3
       with:
         name: release-apk
-        path: SKRoot-linuxKernelRoot/PermissionManager/app/build/outputs/apk/release/*.apk
+        path: ./PermissionManager/app/build/outputs/apk/release/*.apk
