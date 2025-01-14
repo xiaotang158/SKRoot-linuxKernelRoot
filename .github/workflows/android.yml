@@ -25,7 +25,7 @@ jobs:
 
     - name: Build with Gradle
       run: PermissionManager/gradlew build
-      working-directory: PermissionManager
+      working-directory: ./
 
     - name: Download dependencies
       run: PermissionManager/gradlew dependencies --stacktrace
