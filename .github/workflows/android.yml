@@ -25,7 +25,6 @@ jobs:
 
     - name: Build with Gradle
       run: ./gradlew build
-      working-directory: SKRoot-linuxKernelRoot/PermissionManager
 
     - name: Download dependencies
       run: ./gradlew dependencies --stacktrace
