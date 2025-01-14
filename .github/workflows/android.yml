@@ -8,11 +8,11 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
+
     - name: set up JDK 11
       uses: actions/setup-java@v4
       with:
@@ -22,17 +22,23 @@ jobs:
 
     - name: Grant execute permission for gradlew
       run: chmod +x PermissionManager/gradlew
+      working-directory: PermissionManager
+
     - name: Build with Gradle
-      run: PermissionManager/gradlew build
-      
+      run: ./gradlew build
+      working-directory: PermissionManager
+
     - name: Download dependencies
-      run: PermissionManager/gradlew dependencies --stacktrace
+      run: ./gradlew dependencies --stacktrace
+      working-directory: PermissionManager
 
     - name: Build Debug APK
-      run: PermissionManager/gradlew assembleDebug --stacktrace
+      run: ./gradlew assembleDebug --stacktrace
+      working-directory: PermissionManager
 
     - name: Build Release APK
-      run: PermissionManager/gradlew assembleRelease --stacktrace
+      run: ./gradlew assembleRelease --stacktrace
+      working-directory: PermissionManager
 
     - name: Upload Debug APK
       uses: actions/upload-artifact@v3
@@ -41,7 +47,8 @@ jobs:
         path: SKRoot-linuxKernelRoot/PermissionManager/app/build/outputs/apk/debug/*.apk
 
     - name: Build Release APK
-      run: PermissionManager/gradlew assembleRelease --stacktrace
+      run: ./gradlew assembleRelease --stacktrace
+      working-directory: PermissionManager
 
     - name: Upload Release APK
       uses: actions/upload-artifact@v3
