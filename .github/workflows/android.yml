@@ -29,15 +29,15 @@ jobs:
 
     - name: Download dependencies
       run: ./gradlew dependencies --stacktrace
-      working-directory: SKRoot-linuxKernelRoot/PermissionManager
+
 
     - name: Build Debug APK
       run: ./gradlew assembleDebug --stacktrace
-      working-directory: SKRoot-linuxKernelRoot/PermissionManager
+
 
     - name: Build Release APK
       run: ./gradlew assembleRelease --stacktrace
-      working-directory: SKRoot-linuxKernelRoot/PermissionManager
+
 
     - name: Upload Debug APK
       uses: actions/upload-artifact@v3
@@ -47,7 +47,7 @@ jobs:
 
     - name: Build Release APK
       run: ./gradlew assembleRelease --stacktrace
-      working-directory: SKRoot-linuxKernelRoot/PermissionManager
+
 
     - name: Upload Release APK
       uses: actions/upload-artifact@v3
