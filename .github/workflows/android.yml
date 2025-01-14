@@ -21,7 +21,7 @@ jobs:
         cache: gradle
 
     - name: Grant execute permission for gradlew
-      run: cd SKRoot-linuxKernelRoot/PermissionManager && chmod +x PermissionManager/gradlew
+      run: cd PermissionManager/ && chmod +x PermissionManager/gradlew
 
     - name: Build with Gradle
       run: PermissionManager/gradlew build
